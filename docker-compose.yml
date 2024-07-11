@@ -28,3 +28,10 @@ services:
       context: .
       dockerfile: PromotionAPI/Dockerfile
 
+
+  shippingapi:
+    image: ${DOCKER_REGISTRY-}shippingapi
+    build:
+      context: .
+      dockerfile: ShippingAPI/Dockerfile
+

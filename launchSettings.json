@@ -8,7 +8,8 @@
         "apigateway": "StartDebugging",
         "orderapi": "StartDebugging",
         "productapi": "StartDebugging",
-        "promotionapi": "StartDebugging"
+        "promotionapi": "StartDebugging",
+        "shippingapi": "StartDebugging"
       }
     }
   }
