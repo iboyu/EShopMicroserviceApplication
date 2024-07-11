@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  customerapi:
+    image: ${DOCKER_REGISTRY-}customerapi
+    build:
+      context: .
+      dockerfile: CustomerAPI/Dockerfile
+
+
+  productapi:
+    image: ${DOCKER_REGISTRY-}productapi
+    build:
+      context: .
+      dockerfile: ProductAPI/Dockerfile
+
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: Apigateway/Dockerfile
+
+
+  promotionapi:
+    image: ${DOCKER_REGISTRY-}promotionapi
+    build:
+      context: .
+      dockerfile: PromotionAPI/Dockerfile
+
