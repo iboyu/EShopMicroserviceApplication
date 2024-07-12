@@ -16,7 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PromotionDbContext>(option => {
-    option.UseSqlServer(configuration.GetConnectionString("EShopDB"));
+    option.UseSqlServer(configuration.GetConnectionString("PromotionDbMS"));
 });
 
 

@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ProductDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDB"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProductDbMS"));
 });
 
 builder.Services.AddScoped<IProductRepositoryAsync, ProductRepositoryAsync>();

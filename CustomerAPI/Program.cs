@@ -20,7 +20,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddDbContext<EShopDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDB"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDbMS"));
 });
 
 builder.Services.AddScoped<ICustomerRepositoryAsync, CustomerRepositoryAsync>();
