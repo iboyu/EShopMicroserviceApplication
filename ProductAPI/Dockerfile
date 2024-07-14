@@ -19,6 +19,7 @@ RUN dotnet build "./ProductAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./ProductAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+ENV ProductDbMS="Server=tcp:eshop-ryan.database.windows.net,1433;Initial Catalog=ProductDb;Persist Security Info=False;User ID=ryan;Password=Zet19951008!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 
 FROM base AS final
 WORKDIR /app

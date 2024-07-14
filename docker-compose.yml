@@ -35,3 +35,10 @@ services:
       context: .
       dockerfile: ShippingAPI/Dockerfile
 
+
+  orderapi:
+    image: ${DOCKER_REGISTRY-}orderapi
+    build:
+      context: .
+      dockerfile: OrderAPI/Dockerfile
+

@@ -18,10 +18,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program));
 
+//builder.Services.AddDbContext<EShopDbContext>(options =>
+//{
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDbMS"));
+//});
+
 builder.Services.AddDbContext<EShopDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDbMS"));
+    options.UseSqlServer(Environment.GetEnvironmentVariable("CustomerDb"));
 });
+
+
 
 builder.Services.AddScoped<ICustomerRepositoryAsync, CustomerRepositoryAsync>();
 builder.Services.AddScoped<ICustomerServiceAsync, CustomerServiceAsync>();
@@ -31,11 +38,11 @@ var app = builder.Build();
 //app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseAuthorization();
 

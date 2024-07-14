@@ -5,11 +5,12 @@ USER app
 WORKDIR /app
 EXPOSE 8080
 
+ENV CustomerDb="Server=tcp:eshop-ryan.database.windows.net,1433;Initial Catalog=CustomerDb;Persist Security Info=False;User ID=ryan;Password=Zet19951008!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["CustomerAPI/CustomerAPI.csproj", "CustomerAPI/"]
-COPY ["CUstomerAPI.Infrastructure/CustomerAPI.Infrastructure.csproj", "CUstomerAPI.Infrastructure/"]
+COPY ["CUstomerAPI.Infrastructure/CustomerAPI.Infrastruecure.csproj", "CUstomerAPI.Infrastructure/"]
 COPY ["CustomerAPI.ApplicationCore/CustomerAPI.ApplicationCore.csproj", "CustomerAPI.ApplicationCore/"]
 RUN dotnet restore "./CustomerAPI/CustomerAPI.csproj"
 COPY . .

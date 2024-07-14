@@ -5,13 +5,16 @@ USER app
 WORKDIR /app
 EXPOSE 8080
 
+#ENV OrderDb="Server=tcp:eshop-ryan.database.windows.net,1433;Initial Catalog=OrderDb;Persist Security Info=False;User ID=ryan;Password=Zet19951008!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["OrderApi/OrderAPI.csproj", "OrderApi/"]
-RUN dotnet restore "./OrderApi/OrderAPI.csproj"
+COPY ["OrderAPI/OrderAPI.csproj", "OrderAPI/"]
+COPY ["OrderAPI.Infrastructure/OrderAPI.Infrastructure.csproj", "OrderAPI.Infrastructure/"]
+COPY ["OrderAPI.ApplicationCore/OrderAPI.ApplicationCore.csproj", "OrderAPI.ApplicationCore/"]
+RUN dotnet restore "./OrderAPI/OrderAPI.csproj"
 COPY . .
-WORKDIR "/src/OrderApi"
+WORKDIR "/src/OrderAPI"
 RUN dotnet build "./OrderAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

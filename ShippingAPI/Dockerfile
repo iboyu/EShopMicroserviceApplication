@@ -5,6 +5,7 @@ USER app
 WORKDIR /app
 EXPOSE 8080
 
+ENV ShippingDb="Server=tcp:eshop-ryan.database.windows.net,1433;Initial Catalog=ShippingDb;Persist Security Info=False;User ID=ryan;Password=Zet19951008!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src

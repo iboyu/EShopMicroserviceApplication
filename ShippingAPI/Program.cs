@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using ShippingAPI.ApplicationCore.Contracts.Repositories;
 using ShippingAPI.ApplicationCore.Contracts.Services;
 using ShippingAPI.Infrastructure.Data;
@@ -15,7 +16,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ShippingDbContext>(option => {
-    option.UseSqlServer(configuration.GetConnectionString("ShippingDbMS"));
+    //option.UseSqlServer(configuration.GetConnectionString("ShippingDbMS"));
+    option.UseSqlServer(Environment.GetEnvironmentVariable("ShippingDb"));
 });
 
 builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
